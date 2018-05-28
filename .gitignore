@@ -103,7 +103,7 @@ ENV/
 # Custom
 
 .idea/
-<project_name>.config.yaml
-<project_name>.logging.yaml
+*.config.yaml
+*.logging.yaml
 project_name/cache
 project_name/data

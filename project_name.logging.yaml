@@ -27,7 +27,7 @@ loggers:
        handlers: ['default']
        level: 'INFO'
        propagate: True
-   <prject_name>:
+   <project_name>:
        handlers: ['default','error', 'file']
        level: 'DEBUG'
        propagate: False
