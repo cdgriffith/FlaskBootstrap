@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+
+    <link rel="stylesheet" href="/static/css/project_name.css"/>
+    <script type="application/javascript" src="/static/js/project_name.js"></script>
+
+    {% block head %}
+    {% endblock %}
+
+    <title>project_name - {% block title %}{% endblock %}</title>
+</head>
+<body>
+
+
+<div id="content">
+    {% block content %}
+    {% endblock %}
+</div>
+
+<div class="footer">
+    {% block footer %}
+        &copy; Copyright 2018 by project_name
+    {% endblock %}
+</div>
+
+
+</body>
+</html>

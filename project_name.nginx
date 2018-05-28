@@ -1,0 +1,52 @@
+server {
+    # Redirect non-www to www, can be reversed for opposite effect
+    listen 443 ssl;
+    server_name <project_name>.com;
+    return 301 https://www.<project_name>.com$request_uri;
+
+}
+
+server {
+    listen 80 default_server;
+    server_name www.<project_name>.com;
+    return 301 https://www.<project_name>.com$request_uri;
+}
+
+server {
+    listen 443 ssl default_server;
+    server_name www.<project_name>.com;
+
+    ssl on;
+
+    ssl_certificate /etc/ssl/certs/<project_name>.crt;
+    ssl_certificate_key /etc/ssl/private/<project_name>.key;
+
+    ssl_session_timeout 1d;
+    ssl_session_cache shared:SSL:20m;
+    ssl_session_tickets off;
+
+    ssl_protocols TLSv1.2; # TLSv1.3 when it becomes mainline
+    ssl_prefer_server_ciphers on;
+    ssl_ciphers 'EECDH+AESGCM:EDH+AESGCM:AES256+EECDH:AES256+EDH';
+
+    ssl_stapling on;
+    ssl_stapling_verify on;
+
+    access_log  /var/log/<project_name>/access.log;
+    error_log  /var/log/<project_name>/error.log;
+
+    proxy_set_header    X-Real-IP         $remote_addr;
+    proxy_set_header    X-Forwarded-For   $proxy_add_x_forwarded_for;
+    proxy_set_header    X-Forwarded-SSL on;
+    proxy_set_header    X-Forwarded-Proto $scheme;
+
+    location /admin {
+        auth_basic           "Administrator's Area";
+        auth_basic_user_file /etc/nginx/.htpasswd;
+        proxy_pass http://localhost:8080/admin;
+    }
+
+    location / {
+        proxy_pass http://localhost:8080;
+    }
+}

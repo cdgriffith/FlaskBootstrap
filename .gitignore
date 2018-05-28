@@ -99,3 +99,11 @@ ENV/
 
 # mypy
 .mypy_cache/
+
+# Custom
+
+.idea/
+<project_name>.config.yaml
+<project_name>.logging.yaml
+project_name/cache
+project_name/data

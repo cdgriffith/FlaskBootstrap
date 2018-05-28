@@ -1,0 +1,15 @@
+# /etc/systemd/system/<project_name>.service
+
+[Unit]
+Description=<project_name>
+After=network.target
+
+[Service]
+Restart=on-failure
+RestartSec=20
+User=<project_name>
+WorkingDirectory=/opt/<project_name>/src/
+ExecStart=/opt/<project_name>/venv/bin/python -m <project_name>
+
+[Install]
+WantedBy=multi-user.target
