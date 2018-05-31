@@ -36,6 +36,7 @@ def replace_file(replace_file):
                                                       program_name)
         f.seek(0)
         f.write(data)
+        f.truncate()
 
 
 for file in list(reusables.find_files(program_name,
