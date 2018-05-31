@@ -6,8 +6,15 @@ Designed for:
 * Python 3.6+ 
 * Linux
 
-Replace all <project_name> with your own project's name. 
-(may be with our without the carrets)
+Run the setup to rename everything to your own project name.
+
+```bash
+python -m venv venv
+source venv/bin/activate
+pip install reusables
+
+python project_setup.py
+```
 
 Create your own config file at <project_name>.config.yaml 
 
@@ -16,7 +23,7 @@ Should contain the following items:
 ```yaml
 env: production
 host: 0.0.0.0
-port: 8080 # Should match the one in project_name.nginx
+port: 8080 # Should match the one in <project_name>.nginx
 session_secret: bad_secret  # make real one with os.urandom(32).hex()
 ```
 
@@ -73,7 +80,3 @@ systemctl start <project_name>.service
 service nginx restart
 
 ```
-
-## TODO 
-
-* Put and test cache in /tmp
