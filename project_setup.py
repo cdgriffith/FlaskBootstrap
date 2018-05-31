@@ -50,6 +50,17 @@ for file in [f'{program_name}.logging.yaml',
              'README.md']:
     replace_file(file)
 
-print('Setup has completed, you may now delete this file')
+print('Setup has completed, you may now delete this file\n')
 
-
+print('Other downloads to consider: ')
+print('JQuery: https://jquery.com/download/')
+print('    <script type="application/javascript" src="/static/js/jquery.min.js"></script>')
+print()
+print('Bootstrap: https://github.com/twbs/bootstrap/releases/latest')
+print('    <link rel="stylesheet" href="/static/css/bootstrap.min.css"/>')
+print('    <script type="application/javascript" src="/static/js/bootstrap.bundle.min.js"></script>')
+print()
+print('Dropzone.js: https://gitlab.com/meno/dropzone/builds/artifacts/master/download?job=release')
+print('    <link rel="stylesheet" href="/static/css/dropzone.css"/>')
+print('    <link rel="stylesheet" href="/static/css/basic.css"/>')
+print('    <script type="application/javascript" src="/static/js/dropzone.js"></script>')
